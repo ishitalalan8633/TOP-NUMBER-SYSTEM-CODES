@@ -1,0 +1,49 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        
+        try {
+            // Read the number of terms (n) from user input
+            System.out.print("Enter the number of terms for Fibonacci series: ");
+            int n = Integer.parseInt(bf.readLine());
+            
+            // Generate the Fibonacci series
+            System.out.println("Fibonacci series up to " + n + " terms:");
+            printFibonacci(n);
+            
+        } catch (IOException e) {
+            System.out.println("Invalid input");
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid integer");
+        }
+    }
+
+    // Method to print Fibonacci series up to n terms
+    static void printFibonacci(int n) {
+        int first = 0, second = 1;
+        
+        // If n is 1, only print the first term
+        if (n >= 1) {
+            System.out.print(first + " ");
+        }
+        
+        // If n is 2 or more, print the second term as well
+        if (n >= 2) {
+            System.out.print(second + " ");
+        }
+        
+        // Loop to print the next terms in the series
+        for (int i = 3; i <= n; i++) {
+            int next = first + second;
+            System.out.print(next + " ");
+            
+            // Update the values of first and second for the next iteration
+            first = second;
+            second = next;
+        }
+        System.out.println();  // Print a newline at the end
+    }
+}
+
